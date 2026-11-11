@@ -1,0 +1,37 @@
+{
+  "name": "cursorbrains",
+  "displayName": "CursorBrains",
+  "description": "Pins Peek References results to Cursor's persistent References view.",
+  "version": "0.15.0",
+  "publisher": "cursorbrains",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "files": [
+    "extension.cjs",
+    "README.md"
+  ],
+  "main": "./extension.cjs",
+  "activationEvents": [
+    "onCommand:cursorBrains.pinReferences"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "cursorBrains.pinReferences",
+        "title": "Pin References to View",
+        "category": "CursorBrains"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "cursorBrains.pinReferences",
+        "key": "ctrl+alt+shift+f18",
+        "mac": "ctrl+alt+shift+f18"
+      }
+    ]
+  }
+}

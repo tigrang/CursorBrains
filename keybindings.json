@@ -1,0 +1,10 @@
+[
+  {
+    "key": "cmd+]",
+    "command": "-editor.action.indentLines"
+  },
+  {
+    "key": "cmd+shift+f",
+    "command": "spyglass.focusSidebar"
+  }
+]

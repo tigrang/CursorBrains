@@ -1,0 +1,713 @@
+@reference "tailwindcss";
+
+/*
+ * JetBrains-inspired workbench colors. Keep this stylesheet unlayered:
+ * Cursor's own unlayered rules otherwise win over Tailwind cascade layers.
+ * @reference supplies @apply utilities without shipping Preflight or :root
+ * theme declarations into the editor's document.
+ */
+.monaco-workbench {
+  --cursorbrains-frame: #25282c;
+  --cursorbrains-panel: #191a1d;
+  --cursorbrains-elevated: #232529;
+  --cursorbrains-selection: #33353a;
+  --cursorbrains-activity-selection: #484b53;
+  /* PhpStorm project-tree selection (sampled from the Islands tree). */
+  --cursorbrains-tree-selection: #30426e;
+  --cursorbrains-hover: #292c31;
+  --cursorbrains-border: #36393f;
+  --cursorbrains-text: #c3c5cb;
+  --cursorbrains-muted: #74767b;
+  --cursorbrains-faint: #62656b;
+  --cursorbrains-blue: #3771e1;
+  --cursorbrains-link: #5891ff;
+  /* PhpStorm editor tabs: selected and hover fills sampled from the Islands tab bar. */
+  --cursorbrains-tab-active: #233657;
+  --cursorbrains-tab-hover: #2d2e30;
+  --cursorbrains-tab-inactive-text: #96989e;
+  /* Active pill outline. A step darker than --cursorbrains-blue. */
+  --cursorbrains-tab-border: #2c5fbe;
+  --cursorbrains-radius: 12px;
+  --cursorbrains-seam: 5px;
+  --cursorbrains-activity-bar-width: 36px;
+  --cursorbrains-activity-action-size: 28px;
+  --cursorbrains-activity-icon-size: 16px;
+  /* PhpStorm Appearance: custom UI font Inter at 13. */
+  --cursorbrains-tree-font: Inter, sans-serif;
+  --cursorbrains-tree-font-size: 13px;
+  /* PhpStorm editor gutter, sampled from the Islands reference. */
+  --cursorbrains-gutter-background: #18191a;
+  --cursorbrains-gutter-number: #43464e;
+  --cursorbrains-gutter-number-active: #9799a1;
+  --cursorbrains-gutter-font-size: 13px;
+  --cursorbrains-gutter-padding: 7px;
+
+  --vscode-titleBar-activeBackground: var(--cursorbrains-frame) !important;
+  --vscode-titleBar-inactiveBackground: var(--cursorbrains-frame) !important;
+  --vscode-titleBar-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-titleBar-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-titleBar-border: transparent !important;
+  --vscode-activityBar-background: var(--cursorbrains-frame) !important;
+  --vscode-activityBar-foreground: var(--cursorbrains-text) !important;
+  --vscode-activityBar-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-activityBar-border: transparent !important;
+  --vscode-activityBar-activeBorder: transparent !important;
+  --vscode-activityBar-activeBackground: var(--cursorbrains-selection) !important;
+  --vscode-activityBarBadge-background: var(--cursorbrains-blue) !important;
+  --vscode-activityBarBadge-foreground: #ffffff !important;
+
+  --vscode-sideBar-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBar-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBar-border: transparent !important;
+  --vscode-sideBarTitle-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBarTitle-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBarSectionHeader-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBarSectionHeader-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBarSectionHeader-border: transparent !important;
+  --vscode-panel-background: var(--cursorbrains-panel) !important;
+  --vscode-panel-border: transparent !important;
+  --vscode-panelTitle-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-panelTitle-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-panelTitle-activeBorder: var(--cursorbrains-blue) !important;
+  --vscode-terminal-background: var(--cursorbrains-panel) !important;
+  --vscode-outputView-background: var(--cursorbrains-panel) !important;
+
+  /* Only the code canvas background changes; syntax, selection and font stay native. */
+  --vscode-editor-background: var(--cursorbrains-panel) !important;
+  --vscode-editorGutter-background: var(--cursorbrains-gutter-background) !important;
+  --vscode-editorGroup-border: var(--cursorbrains-frame) !important;
+  --vscode-editorGroup-emptyBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-tabsBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-noTabsBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-tabsBorder: transparent !important;
+  --vscode-editorGroupHeader-border: transparent !important;
+  --vscode-tab-activeBackground: transparent !important;
+  --vscode-tab-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-inactiveBackground: transparent !important;
+  --vscode-tab-inactiveForeground: var(--cursorbrains-tab-inactive-text) !important;
+  --vscode-tab-unfocusedActiveBackground: transparent !important;
+  --vscode-tab-unfocusedActiveForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-unfocusedInactiveBackground: transparent !important;
+  --vscode-tab-unfocusedInactiveForeground: var(--cursorbrains-tab-inactive-text) !important;
+  --vscode-tab-hoverBackground: transparent !important;
+  --vscode-tab-hoverForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-border: transparent !important;
+  --vscode-tab-activeBorder: transparent !important;
+  --vscode-tab-activeBorderTop: transparent !important;
+  --vscode-tab-activeBorderBottom: transparent !important;
+  --vscode-tab-unfocusedActiveBorder: transparent !important;
+  --vscode-tab-unfocusedActiveBorderTop: transparent !important;
+  --vscode-breadcrumb-background: var(--cursorbrains-panel) !important;
+  --vscode-breadcrumb-foreground: var(--cursorbrains-muted) !important;
+  --vscode-breadcrumb-focusForeground: var(--cursorbrains-text) !important;
+
+  --vscode-statusBar-background: var(--cursorbrains-frame) !important;
+  --vscode-statusBar-noFolderBackground: var(--cursorbrains-frame) !important;
+  --vscode-statusBar-foreground: var(--cursorbrains-muted) !important;
+  --vscode-statusBar-border: transparent !important;
+  --vscode-statusBarItem-hoverBackground: var(--cursorbrains-selection) !important;
+  --vscode-statusBarItem-remoteBackground: var(--cursorbrains-frame) !important;
+  --vscode-statusBarItem-remoteForeground: var(--cursorbrains-text) !important;
+
+  --vscode-list-hoverBackground: var(--cursorbrains-hover) !important;
+  --vscode-list-hoverForeground: var(--cursorbrains-text) !important;
+  --vscode-list-activeSelectionBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-activeSelectionForeground: var(--cursorbrains-text) !important;
+  --vscode-list-inactiveSelectionBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-inactiveSelectionForeground: var(--cursorbrains-text) !important;
+  --vscode-list-focusBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-focusForeground: var(--cursorbrains-text) !important;
+  --vscode-list-focusOutline: var(--cursorbrains-blue) !important;
+  --vscode-tree-indentGuidesStroke: var(--cursorbrains-border) !important;
+
+  --vscode-input-background: var(--cursorbrains-panel) !important;
+  --vscode-input-foreground: var(--cursorbrains-text) !important;
+  --vscode-input-border: var(--cursorbrains-border) !important;
+  --vscode-input-placeholderForeground: var(--cursorbrains-muted) !important;
+  --vscode-inputOption-activeBackground: #3771e126 !important;
+  --vscode-inputOption-activeBorder: var(--cursorbrains-blue) !important;
+  --vscode-dropdown-background: var(--cursorbrains-elevated) !important;
+  --vscode-dropdown-foreground: var(--cursorbrains-text) !important;
+  --vscode-dropdown-border: var(--cursorbrains-border) !important;
+  --vscode-button-background: var(--cursorbrains-blue) !important;
+  --vscode-button-hoverBackground: #4b80e5 !important;
+  --vscode-button-foreground: #ffffff !important;
+  --vscode-button-secondaryBackground: var(--cursorbrains-selection) !important;
+  --vscode-button-secondaryHoverBackground: var(--cursorbrains-border) !important;
+  --vscode-button-secondaryForeground: var(--cursorbrains-text) !important;
+  --vscode-toolbar-hoverBackground: var(--cursorbrains-selection) !important;
+  --vscode-toolbar-activeBackground: var(--cursorbrains-hover) !important;
+  --vscode-focusBorder: var(--cursorbrains-blue) !important;
+  --vscode-textLink-foreground: var(--cursorbrains-link) !important;
+  --vscode-textLink-activeForeground: #7aa7ff !important;
+  --vscode-widget-border: var(--cursorbrains-border) !important;
+  --vscode-widget-shadow: #00000040 !important;
+  --vscode-quickInput-background: var(--cursorbrains-elevated) !important;
+  --vscode-quickInput-foreground: var(--cursorbrains-text) !important;
+  --vscode-menu-background: var(--cursorbrains-elevated) !important;
+  --vscode-menu-foreground: var(--cursorbrains-text) !important;
+  --vscode-menu-border: var(--cursorbrains-border) !important;
+  --vscode-scrollbarSlider-background: #74767b36 !important;
+  --vscode-scrollbarSlider-hoverBackground: #74767b66 !important;
+  --vscode-scrollbarSlider-activeBackground: #74767b88 !important;
+  --vscode-scrollbar-shadow: transparent !important;
+  --vscode-sash-hoverBorder: var(--cursorbrains-blue) !important;
+
+  /* Cursor's own chat uses aliases beyond the standard VS Code palette. */
+  --composer-pane-background: var(--cursorbrains-panel) !important;
+  --cursor-text-primary: var(--cursorbrains-text) !important;
+  --cursor-text-secondary: #a0a2a8 !important;
+  --cursor-text-tertiary: var(--cursorbrains-muted) !important;
+  --cursor-text-quaternary: var(--cursorbrains-faint) !important;
+  --cursor-text-active: var(--cursorbrains-text) !important;
+  --cursor-text-focused: var(--cursorbrains-text) !important;
+  --cursor-icon-primary: var(--cursorbrains-text) !important;
+  --cursor-icon-secondary: #a0a2a8 !important;
+  --cursor-icon-tertiary: var(--cursorbrains-muted) !important;
+  --cursor-icon-quaternary: var(--cursorbrains-faint) !important;
+  --cursor-icon-accent-primary: var(--cursorbrains-link) !important;
+  --cursor-bg-primary: #c3c5cb33 !important;
+  --cursor-bg-secondary: #c3c5cb24 !important;
+  --cursor-bg-tertiary: #c3c5cb14 !important;
+  --cursor-bg-quaternary: #c3c5cb0f !important;
+  --cursor-bg-quinary: #c3c5cb0a !important;
+  --cursor-bg-elevated: var(--cursorbrains-elevated) !important;
+  --cursor-bg-active: var(--cursorbrains-selection) !important;
+  --cursor-bg-focused: var(--cursorbrains-selection) !important;
+  --cursor-stroke-primary: var(--cursorbrains-border) !important;
+  --cursor-stroke-secondary: #c3c5cb1f !important;
+  --cursor-stroke-tertiary: #c3c5cb14 !important;
+  --cursor-stroke-quaternary: #c3c5cb0a !important;
+  --cursor-stroke-focused: var(--cursorbrains-blue) !important;
+
+  background-color: var(--cursorbrains-frame) !important;
+}
+
+/*
+ * Paint-only seams leave Cursor's measured layout and sash hit areas intact.
+ * Keep workbench part bounds intact; Cursor manages panel and content sizes.
+ * A pointer-transparent overlay paints seams and corner cutouts above square
+ * child surfaces. It never clips descendants or changes their hit targets.
+ */
+.monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel) {
+  @apply rounded-[var(--cursorbrains-radius)]!;
+  background-color: var(--cursorbrains-panel) !important;
+  border-color: transparent !important;
+}
+
+.monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel)::after {
+  --cursorbrains-corner-span: calc(var(--cursorbrains-radius) + var(--cursorbrains-seam));
+  --cursorbrains-cutout: calc(var(--cursorbrains-radius) - 0.5px);
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at bottom right, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) top left,
+    radial-gradient(circle at bottom left, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) top right,
+    radial-gradient(circle at top right, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) bottom left,
+    radial-gradient(circle at top left, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) bottom right;
+  background-size: var(--cursorbrains-corner-span) var(--cursorbrains-corner-span);
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 var(--cursorbrains-seam) var(--cursorbrains-frame);
+}
+
+/*
+ * The bottom panel ends flush against the frame-colored status bar, so it does
+ * not need an inner bottom seam. Leaving that side in the overlay covers the
+ * bottom 5px of xterm's canvas and clips the terminal's final visible row.
+ */
+.monaco-workbench .part.panel::after {
+  box-shadow:
+    inset var(--cursorbrains-seam) 0 0 0 var(--cursorbrains-frame),
+    inset calc(-1 * var(--cursorbrains-seam)) 0 0 0 var(--cursorbrains-frame),
+    inset 0 var(--cursorbrains-seam) 0 0 var(--cursorbrains-frame);
+}
+
+/*
+ * Agent chat is an embedded editor inside the auxiliary part. The outer
+ * auxiliary part owns its frame, while the neighboring editor already paints
+ * their shared seam. Avoid painting that boundary twice.
+ */
+.monaco-workbench .part.editor.embedded-aux-bar-editor {
+  border-radius: 0 !important;
+}
+
+.monaco-workbench .part.editor.embedded-aux-bar-editor::after {
+  content: none;
+}
+
+.monaco-workbench .split-view-view:has(.part.editor)+.split-view-view>.part.auxiliarybar::after {
+  box-shadow:
+    inset calc(-1 * var(--cursorbrains-seam)) 0 0 0 var(--cursorbrains-frame),
+    inset 0 var(--cursorbrains-seam) 0 0 var(--cursorbrains-frame),
+    inset 0 calc(-1 * var(--cursorbrains-seam)) 0 0 var(--cursorbrains-frame);
+}
+
+.monaco-workbench .part:is(.sidebar, .auxiliarybar, .panel)>.title,
+.monaco-workbench .part.editor>.content>.monaco-grid-view {
+  border-top-left-radius: var(--cursorbrains-radius);
+  border-top-right-radius: var(--cursorbrains-radius);
+}
+
+.monaco-workbench .part:is(.sidebar, .auxiliarybar, .panel)>.title {
+  background-color: var(--cursorbrains-panel) !important;
+  color: var(--cursorbrains-text);
+}
+
+.monaco-workbench .part:is(.sidebar, .auxiliarybar, .panel)>.title .title-label h2 {
+  text-transform: none;
+  font-weight: 600;
+}
+
+.monaco-workbench .part:is(.titlebar, .activitybar, .statusbar) {
+  background-color: var(--cursorbrains-frame) !important;
+  border-color: transparent !important;
+}
+
+.monaco-workbench .part.activitybar .action-item .action-label {
+  @apply rounded-[6px];
+}
+
+.monaco-workbench .part.activitybar .action-item.checked .action-label {
+  background-color: var(--cursorbrains-activity-selection);
+}
+
+/*
+ * Cursor writes the activity-bar split width and the following branch's offset
+ * inline. Override the wrapper, its contents, and its adjacent branch together
+ * so the narrower bar does not leave an empty strip in the workbench layout.
+ */
+.monaco-workbench .split-view-view:has(>.part.activitybar),
+.monaco-workbench .split-view-view:has(>.part.activitybar)>.part.activitybar,
+.monaco-workbench .split-view-view:has(>.part.activitybar)>.part.activitybar>.content {
+  width: var(--cursorbrains-activity-bar-width) !important;
+}
+
+.monaco-workbench .split-view-view:has(>.part.activitybar)+.split-view-view {
+  left: var(--cursorbrains-activity-bar-width) !important;
+  width: calc(100% - var(--cursorbrains-activity-bar-width)) !important;
+}
+
+.monaco-workbench .part.activitybar .monaco-action-bar.vertical>.actions-container {
+  box-sizing: border-box !important;
+  gap: 4px !important;
+  padding: 2px !important;
+}
+
+.monaco-workbench .part.activitybar .monaco-action-bar.vertical .action-item,
+.monaco-workbench .part.activitybar .monaco-action-bar.vertical .action-label {
+  width: var(--cursorbrains-activity-action-size) !important;
+  height: var(--cursorbrains-activity-action-size) !important;
+  margin-inline: auto;
+}
+
+.monaco-workbench .part.activitybar .monaco-action-bar.vertical .action-label {
+  padding: 2px;
+}
+
+.monaco-workbench .part.activitybar>.content :not(.monaco-menu)>.monaco-action-bar.vertical .action-item .badge .badge-content {
+  font-size: 8px !important;
+  line-height: 12px !important;
+  min-width: 6px !important;
+  height: 12px !important;
+  padding: 0 3px !important;
+  top: 14px !important;
+  right: 1px !important;
+  transform: none !important;
+  transform-origin: right bottom !important;
+}
+
+/* Keep font and URI-backed icons at the same compact visual size. */
+.monaco-workbench .part.activitybar>.content :not(.monaco-menu)>.monaco-action-bar.vertical .action-label.codicon {
+  font-size: var(--cursorbrains-activity-icon-size) !important;
+}
+
+.monaco-workbench .part.activitybar>.content :not(.monaco-menu)>.monaco-action-bar.vertical .action-label.uri-icon {
+  mask-size: var(--cursorbrains-activity-icon-size) var(--cursorbrains-activity-icon-size) !important;
+  background-size: var(--cursorbrains-activity-icon-size) var(--cursorbrains-activity-icon-size) !important;
+}
+
+/* Cursor fixes the native sticky-scroll shadow at 0 4px 2px -2px. */
+.monaco-workbench .monaco-editor .sticky-widget {
+  box-shadow: 0 10px 18px -5px var(--vscode-editorStickyScroll-shadow) !important;
+}
+
+/*
+ * Keep Monaco's fixed-width number column right-aligned, but move the column
+ * to PhpStorm's left gutter position. The frame seam occupies the first 5px,
+ * so the extra padding starts after it and keeps four-digit numbers visible.
+ */
+.monaco-workbench .monaco-editor .margin-view-overlays .line-numbers {
+  left: calc(var(--cursorbrains-seam) + var(--cursorbrains-gutter-padding)) !important;
+  color: var(--cursorbrains-gutter-number) !important;
+  font-size: var(--cursorbrains-gutter-font-size);
+  text-align: right;
+}
+
+.monaco-workbench .monaco-editor .margin-view-overlays .line-numbers.active-line-number {
+  color: var(--cursorbrains-gutter-number-active) !important;
+}
+
+/*
+ * PhpStorm editor tabs are inset pills. The fill is a pseudo-element.
+ * Cursor writes --editor-group-tab-height inline on the title (default 35px).
+ * A non-important :root value loses to that inline declaration, so the
+ * override has to target the title and use !important.
+ * Drag-and-drop reuses ::before for the right-edge marker; that rule below
+ * puts the marker back while a tab is a drop target.
+ */
+.monaco-workbench .part.editor .editor-group-container>.title {
+  --editor-group-tab-height: 42px !important;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container {
+  padding-left: 4px;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  isolation: isolate;
+}
+
+/* The pill sits 2px below the tab's native content center. */
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab>.monaco-icon-label,
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab>.tab-actions {
+  transform: translateY(2px) !important;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 4px;
+  right: 4px;
+  /* Offset past the editor's top frame so the visible spacing is balanced. */
+  top: 10px;
+  bottom: 6px;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab.active::before {
+  background-color: var(--cursorbrains-tab-active);
+  border-color: var(--cursorbrains-tab-border);
+}
+
+.monaco-workbench .part.editor .editor-group-container:not(.active)>.title .tabs-container>.tab.active::before,
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab:not(.active):hover::before {
+  background-color: var(--cursorbrains-tab-hover);
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab.active {
+  color: var(--cursorbrains-text) !important;
+}
+
+/* Prevent file-decoration colors from making inactive tab names unreadable. */
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab:not(.active) .label-name {
+  color: var(--cursorbrains-tab-inactive-text) !important;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab>.tab-border-top-container,
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab>.tab-border-bottom-container {
+  display: none !important;
+}
+
+.monaco-workbench .part.editor .editor-group-container>.title .tabs-container>.tab.drop-target-right::before {
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: auto;
+  width: 1px;
+  height: 100%;
+  border: none;
+  border-radius: 0;
+  background-color: var(--vscode-tab-dragAndDropBorder) !important;
+  z-index: 11;
+}
+
+.monaco-workbench .part:is(.sidebar, .auxiliarybar, .panel) .monaco-list-row {
+  @apply rounded-[4px];
+}
+
+/*
+ * Match PhpStorm's project tree type. Only the filename changes: row height
+ * stays Cursor's 22px so the virtual list keeps its measured layout.
+ */
+.monaco-workbench .explorer-folders-view .monaco-icon-label .label-name {
+  font-family: var(--cursorbrains-tree-font) !important;
+  font-size: var(--cursorbrains-tree-font-size) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+.monaco-workbench .part.sidebar .monaco-list-row.selected,
+.monaco-workbench .part.sidebar .monaco-list-row.focused {
+  background-color: var(--cursorbrains-selection) !important;
+}
+
+/*
+ * PhpStorm paints the selected project-tree file as an inset blue pill.
+ * The highlight is a pseudo-element so row height and label position stay
+ * on Cursor's virtual-list measurements.
+ */
+.monaco-workbench .part.sidebar .explorer-folders-view .monaco-list-row:is(.selected, .focused) {
+  background-color: transparent !important;
+  outline: none !important;
+  isolation: isolate;
+}
+
+.monaco-workbench .part.sidebar .explorer-folders-view .monaco-list-row:is(.selected, .focused)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8px;
+  right: 8px;
+  top: 1px;
+  bottom: 1px;
+  border-radius: 4px;
+  background-color: var(--cursorbrains-tree-selection);
+  pointer-events: none;
+}
+
+.monaco-workbench .monaco-inputbox,
+.monaco-workbench .monaco-select-box,
+.monaco-workbench .monaco-button {
+  @apply rounded-[6px];
+}
+
+.monaco-workbench .monaco-action-bar .action-item .action-label,
+.monaco-workbench .monaco-toolbar .action-item .action-label {
+  @apply rounded-[4px];
+}
+
+.monaco-workbench .monaco-scrollable-element>.scrollbar>.slider {
+  @apply rounded-[6px];
+}
+
+.monaco-workbench .quick-input-widget,
+.monaco-workbench .monaco-menu .monaco-action-bar.vertical {
+  @apply rounded-[8px];
+}
+
+/* Chat is in this document; extension webviews and iframes keep their own CSS. */
+.monaco-workbench .composer-bar,
+.monaco-workbench .composer-messages-container,
+.monaco-workbench .part.auxiliarybar {
+  --composer-pane-background: var(--cursorbrains-panel) !important;
+}
+
+.monaco-workbench .ai-input-full-input-box {
+  --ai-input-full-input-box-border-radius: 8px !important;
+  --ai-input-full-input-box-border: 1px solid var(--cursorbrains-border) !important;
+  background-color: var(--cursorbrains-panel) !important;
+  color: var(--cursorbrains-text);
+}
+
+.monaco-workbench .ai-input-full-input-box:focus-within {
+  --ai-input-full-input-box-border: 1px solid var(--cursorbrains-blue) !important;
+  box-shadow: 0 0 0 1px var(--cursorbrains-blue) !important;
+}
+
+.monaco-workbench .composer-input-edit-banner {
+  @apply rounded-t-[6px];
+  color: var(--cursorbrains-text);
+}
+
+.monaco-workbench .part.auxiliarybar .auxiliary-bar-title--agent-mode .auxiliary-bar-chat-title {
+  color: var(--cursorbrains-text);
+}
+
+/* Classic inset styling shared by References, Local Changes, and other peek views. */
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget {
+  width: calc(100% - 80px) !important;
+  max-width: none !important;
+  margin-inline: 40px !important;
+  border-width: 1px 0 !important;
+  border-style: solid !important;
+  border-color: transparent !important;
+  border-radius: 8px !important;
+  outline: 1px solid var(--cursorbrains-border);
+  outline-offset: -1px;
+  background: var(--cursorbrains-panel) !important;
+  box-shadow: 0 12px 28px #00000073 !important;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget>.head {
+  background: var(--cursorbrains-elevated) !important;
+  border-bottom: 1px solid var(--cursorbrains-border) !important;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget .peekview-title .filename {
+  color: #d7d9de !important;
+  font-weight: 600;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget .peekview-title .dirname {
+  color: #92949b !important;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget .peekview-title .meta {
+  color: #b0b2b8 !important;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget .peekview-actions .action-label {
+  color: var(--cursorbrains-text) !important;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget .peekview-actions .cursorbrains-reference-pin:hover {
+  color: #dce6ff !important;
+}
+
+/* Flatten the native dirty-diff toolbar into the header so CSS can order it without moving DOM nodes. */
+.monaco-workbench .zone-widget.dirty-diff .peekview-widget>.head {
+  justify-content: flex-start;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-widget>.head :is(.peekview-actions, .monaco-action-bar, .actions-container) {
+  display: contents;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-widget>.head>.peekview-title {
+  order: 4;
+  margin-left: 6px;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-title>.filename {
+  display: none;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label^="Show Previous Change"]) {
+  order: 0;
+  margin-left: 4px;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label^="Show Next Change"]) {
+  order: 1;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-actions .action-item[data-command-id="git.revertChange"] {
+  order: 2;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-actions .action-item[data-command-id="git.stageChange"] {
+  order: 3;
+}
+
+.monaco-workbench .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label="Close"]) {
+  order: 5;
+  margin-right: 2px;
+  margin-left: auto;
+}
+
+.monaco-workbench .zone-widget>.zone-widget-container.peekview-widget>.body {
+  border: 0 !important;
+  background: var(--cursorbrains-panel) !important;
+}
+
+/*
+ * Dirty diff is measured before the shared inset is applied. Pin its modified
+ * editor and overview rail to the resulting inner width so neither is clipped.
+ */
+.monaco-workbench .dirty-diff .monaco-diff-editor>.editor.modified {
+  right: 0 !important;
+  width: auto !important;
+}
+
+.monaco-workbench .dirty-diff .monaco-diff-editor>.editor.modified>.monaco-editor,
+.monaco-workbench .dirty-diff .monaco-diff-editor>.editor.modified>.monaco-editor>.overflow-guard {
+  width: 100% !important;
+}
+
+.monaco-workbench .dirty-diff .monaco-diff-editor>.editor.modified .editor-scrollable {
+  right: 0 !important;
+  width: auto !important;
+}
+
+.monaco-workbench .dirty-diff .monaco-diff-editor>.editor.modified :is(.scroll-decoration, .overlayWidgets) {
+  width: 100% !important;
+}
+
+.monaco-workbench .dirty-diff .monaco-diff-editor>.diffOverview {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Peek References keeps its results tree left of the code preview. */
+
+.monaco-workbench .reference-zone-widget .split-view-container>.split-view-view:first-child {
+  left: auto !important;
+  right: 0 !important;
+  width: 66% !important;
+}
+
+.monaco-workbench .reference-zone-widget .split-view-container>.split-view-view:nth-child(2) {
+  left: 0 !important;
+  width: 34% !important;
+}
+
+.monaco-workbench .reference-zone-widget .preview,
+.monaco-workbench .reference-zone-widget .preview>.monaco-editor,
+.monaco-workbench .reference-zone-widget .ref-tree {
+  width: 100% !important;
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree {
+  background: #202124 !important;
+  box-shadow: inset -1px 0 var(--cursorbrains-border);
+  font-family: var(--cursorbrains-tree-font) !important;
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row {
+  width: 100% !important;
+  background: transparent !important;
+  color: #a7a9af !important;
+  outline: none !important;
+  isolation: isolate;
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused)::before,
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row:hover::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 1px 5px;
+  border-radius: 4px;
+  background: var(--cursorbrains-hover);
+  pointer-events: none;
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused) {
+  color: #d8dae0 !important;
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused)::before,
+.monaco-workbench .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused):hover::before {
+  background: var(--cursorbrains-tree-selection);
+}
+
+.monaco-workbench .reference-zone-widget .ref-tree .referenceMatch .highlight {
+  border-radius: 2px;
+  background: #31456f !important;
+  color: #dce6ff !important;
+}
+
+.monaco-workbench .reference-zone-widget .preview,
+.monaco-workbench .reference-zone-widget .preview .monaco-editor {
+  background: var(--cursorbrains-panel) !important;
+}
+
+.monaco-workbench .reference-zone-widget .monaco-sash.vertical {
+  left: calc(34% - 2px) !important;
+  transform: none !important;
+  pointer-events: none;
+}
+
+.monaco-workbench .reference-zone-widget .monaco-sash.vertical:hover {
+  background: var(--cursorbrains-blue) !important;
+}
