@@ -1,6 +1,6 @@
 {
   "name": "cursorbrains",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "A JetBrains-inspired Cursor workbench theme and functionality layer, compiled with Tailwind CSS.",
   "type": "module",
