@@ -285,8 +285,14 @@
   margin-inline: auto;
 }
 
-.monaco-workbench .part.activitybar .monaco-action-bar.vertical .action-label {
-  padding: 2px;
+/*
+ * Cursor gives every non-codicon (URI-backed) label important left padding
+ * equal to the stock bar width. Override the shared label box, rather than an
+ * extension-specific class, so current and future icon types stay centered.
+ */
+.monaco-workbench .part.activitybar>.content :not(.monaco-menu)>.monaco-action-bar.vertical .action-label {
+  box-sizing: border-box !important;
+  padding: 2px !important;
 }
 
 .monaco-workbench .part.activitybar>.content :not(.monaco-menu)>.monaco-action-bar.vertical .action-item .badge .badge-content {
