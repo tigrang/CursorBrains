@@ -28,7 +28,7 @@
   /* Active pill outline. A step darker than --cursorbrains-blue. */
   --cursorbrains-tab-border: #2c5fbe;
   --cursorbrains-radius: 12px;
-  --cursorbrains-seam: 5px;
+  --cursorbrains-seam: 3px;
   --cursorbrains-right-padding: 4px;
   --cursorbrains-activity-bar-width: 36px;
   --cursorbrains-activity-action-size: 28px;
