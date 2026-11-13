@@ -29,6 +29,7 @@
   --cursorbrains-tab-border: #2c5fbe;
   --cursorbrains-radius: 12px;
   --cursorbrains-seam: 5px;
+  --cursorbrains-right-padding: 4px;
   --cursorbrains-activity-bar-width: 36px;
   --cursorbrains-activity-action-size: 28px;
   --cursorbrains-activity-icon-size: 16px;
@@ -203,6 +204,18 @@
 }
 
 /*
+ * Cursor's inline size for the rightmost auxiliary split can stop short of
+ * the grid edge. Pin that wrapper to the edge so its inset seam lines up with
+ * the bottom panel's canvas-colored right border. The extra right inset is
+ * shared with that border below. Keep this position-aware in case the
+ * auxiliary bar is moved to the left side.
+ */
+.monaco-workbench .monaco-split-view2.horizontal .split-view-container>.split-view-view:last-child:has(>.part.auxiliarybar) {
+  right: var(--cursorbrains-right-padding) !important;
+  width: auto !important;
+}
+
+/*
  * The bottom panel cannot use margins without changing terminal measurements.
  * Canvas-colored borders create the same real gap inside its measured box;
  * leaving the bottom border off preserves xterm's final visible row.
@@ -210,7 +223,7 @@
 .monaco-workbench .part.panel.bottom {
   box-sizing: border-box !important;
   border-top: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
-  border-right: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+  border-right: calc(var(--cursorbrains-seam) + var(--cursorbrains-right-padding)) solid var(--cursorbrains-frame) !important;
   border-bottom: 0 !important;
   border-left: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
 }
