@@ -184,65 +184,47 @@
 }
 
 /*
- * Paint-only seams leave Cursor's measured layout and sash hit areas intact.
- * Keep workbench part bounds intact; Cursor manages panel and content sizes.
- * A pointer-transparent overlay paints seams and corner cutouts above square
- * child surfaces. It never clips descendants or changes their hit targets.
+ * Use real canvas gaps and clipped part boxes, following Dark Islands' layout
+ * technique. Painting the gaps with pseudo-elements leaves square inset
+ * shadows at junctions where two rounded parts meet.
  */
 .monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel) {
   @apply rounded-[var(--cursorbrains-radius)]!;
   background-color: var(--cursorbrains-panel) !important;
   border-color: transparent !important;
+  overflow: hidden !important;
 }
 
-.monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel)::after {
-  --cursorbrains-corner-span: calc(var(--cursorbrains-radius) + var(--cursorbrains-seam));
-  --cursorbrains-cutout: calc(var(--cursorbrains-radius) - 0.5px);
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at bottom right, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) top left,
-    radial-gradient(circle at bottom left, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) top right,
-    radial-gradient(circle at top right, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) bottom left,
-    radial-gradient(circle at top left, transparent var(--cursorbrains-cutout), var(--cursorbrains-frame) var(--cursorbrains-radius)) bottom right;
-  background-size: var(--cursorbrains-corner-span) var(--cursorbrains-corner-span);
-  background-repeat: no-repeat;
-  box-shadow: inset 0 0 0 var(--cursorbrains-seam) var(--cursorbrains-frame);
+.monaco-workbench .part.sidebar,
+.monaco-workbench .split-view-view>.part.editor,
+.monaco-workbench .part.auxiliarybar {
+  margin: var(--cursorbrains-seam) var(--cursorbrains-seam) 0;
+  max-height: calc(100% - var(--cursorbrains-seam) - 2px) !important;
 }
 
 /*
- * The bottom panel ends flush against the frame-colored status bar, so it does
- * not need an inner bottom seam. Leaving that side in the overlay covers the
- * bottom 5px of xterm's canvas and clips the terminal's final visible row.
+ * The bottom panel cannot use margins without changing terminal measurements.
+ * Canvas-colored borders create the same real gap inside its measured box;
+ * leaving the bottom border off preserves xterm's final visible row.
  */
-.monaco-workbench .part.panel::after {
-  box-shadow:
-    inset var(--cursorbrains-seam) 0 0 0 var(--cursorbrains-frame),
-    inset calc(-1 * var(--cursorbrains-seam)) 0 0 0 var(--cursorbrains-frame),
-    inset 0 var(--cursorbrains-seam) 0 0 var(--cursorbrains-frame);
+.monaco-workbench .part.panel.bottom {
+  box-sizing: border-box !important;
+  border-top: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+  border-right: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+  border-bottom: 0 !important;
+  border-left: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
 }
 
-/*
- * Agent chat is an embedded editor inside the auxiliary part. The outer
- * auxiliary part owns its frame, while the neighboring editor already paints
- * their shared seam. Avoid painting that boundary twice.
- */
+.monaco-workbench .part.panel.bottom>.content {
+  position: relative !important;
+  margin-top: calc(-1 * var(--cursorbrains-seam)) !important;
+  overflow: hidden !important;
+  border-radius: 0 0 calc(var(--cursorbrains-radius) - var(--cursorbrains-seam)) calc(var(--cursorbrains-radius) - var(--cursorbrains-seam)) !important;
+}
+
+/* The outer auxiliary part clips its full-size embedded agent editor. */
 .monaco-workbench .part.editor.embedded-aux-bar-editor {
   border-radius: 0 !important;
-}
-
-.monaco-workbench .part.editor.embedded-aux-bar-editor::after {
-  content: none;
-}
-
-.monaco-workbench .split-view-view:has(.part.editor)+.split-view-view>.part.auxiliarybar::after {
-  box-shadow:
-    inset calc(-1 * var(--cursorbrains-seam)) 0 0 0 var(--cursorbrains-frame),
-    inset 0 var(--cursorbrains-seam) 0 0 var(--cursorbrains-frame),
-    inset 0 calc(-1 * var(--cursorbrains-seam)) 0 0 var(--cursorbrains-frame);
 }
 
 .monaco-workbench .part:is(.sidebar, .auxiliarybar, .panel)>.title,
