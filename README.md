@@ -7,6 +7,11 @@ npm install
 npm run build
 npm run package-extension
 npm run install-extension
+```
+
+## Extensions
+
+```
 cursor --install-extension compassak.intellij-idea-new-ui
 cursor --install-extension chadalen.vscode-jetbrains-icon-theme
 cursor --install-extension k--kato.intellij-idea-keybindings
@@ -21,6 +26,7 @@ cursor --install-extension git-brain.git-brain
 brew install --cask font-inter
 ```
 
+## Setup
 Use [settings.json](settings.json) for **Preferences: Open User Settings (JSON)** and [keybindings.json](keybindings.json) for **Preferences: Open Keyboard Shortcuts (JSON)**.
 
 Open **Developer: Toggle Developer Tools**, select **Console**, paste `dist/cursorbrains.js`, and run it.
