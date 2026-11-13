@@ -16,6 +16,8 @@ cursor --install-extension bmewburn.vscode-intelephense-client
 cursor --install-extension buenon.scratchpads
 cursor --install-extension usernamehw.errorlens
 cursor --install-extension JamiTech.simply-blame
+cursor --install-extension bradlc.vscode-tailwindcss
+cursor --install-extension git-brain.git-brain
 brew install --cask font-inter
 ```
 
