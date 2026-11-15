@@ -22,7 +22,7 @@ cursor --install-extension buenon.scratchpads
 cursor --install-extension usernamehw.errorlens
 cursor --install-extension JamiTech.simply-blame
 cursor --install-extension bradlc.vscode-tailwindcss
-cursor --install-extension git-brain.git-brain
+cursor --install-extension lkqm.gitblame-annotations
 brew install --cask font-inter
 ```
 

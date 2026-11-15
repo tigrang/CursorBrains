@@ -189,16 +189,18 @@
  * technique. Painting the gaps with pseudo-elements leaves square inset
  * shadows at junctions where two rounded parts meet.
  */
-.monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel) {
+.monaco-workbench .part:is(.sidebar, .editor, .auxiliarybar, .panel, .unifiedsidebar) {
   @apply rounded-[var(--cursorbrains-radius)]!;
   background-color: var(--cursorbrains-panel) !important;
   border-color: transparent !important;
   overflow: hidden !important;
 }
 
+/* Vertical activity-bar orientation renders the unified sidebar as a grid part. */
 .monaco-workbench .part.sidebar,
 .monaco-workbench .split-view-view>.part.editor,
-.monaco-workbench .part.auxiliarybar {
+.monaco-workbench .part.auxiliarybar,
+.monaco-workbench .part.unifiedsidebar {
   margin: var(--cursorbrains-seam) var(--cursorbrains-seam) 0;
   max-height: calc(100% - var(--cursorbrains-seam) - 2px) !important;
 }
@@ -218,14 +220,19 @@
 /*
  * The bottom panel cannot use margins without changing terminal measurements.
  * Canvas-colored borders create the same real gap inside its measured box;
- * leaving the bottom border off preserves xterm's final visible row.
+ * leaving the bottom border off preserves xterm's final visible row. The
+ * extra right inset is only needed when the auxiliary bar is actually visible.
  */
 .monaco-workbench .part.panel.bottom {
   box-sizing: border-box !important;
   border-top: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
-  border-right: calc(var(--cursorbrains-seam) + var(--cursorbrains-right-padding)) solid var(--cursorbrains-frame) !important;
+  border-right: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
   border-bottom: 0 !important;
   border-left: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+}
+
+.monaco-workbench:has(.split-view-view.visible>.part.auxiliarybar) .part.panel.bottom {
+  border-right-width: calc(var(--cursorbrains-seam) + var(--cursorbrains-right-padding)) !important;
 }
 
 .monaco-workbench .part.panel.bottom>.content {
@@ -270,17 +277,20 @@
 }
 
 /*
- * Cursor writes the activity-bar split width and the following branch's offset
- * inline. Override the wrapper, its contents, and its adjacent branch together
- * so the narrower bar does not leave an empty strip in the workbench layout.
+ * Cursor has two activity-bar grid shapes. In the nested shape, its following
+ * view is the rest of the workbench, so both sides can be resized together.
+ * With vertical orientation, the following view is either the sidebar itself
+ * or a branch followed by the unified sidebar. Preserve Cursor's native width
+ * in those shapes; stretching the branch paints over gaps and makes the bottom
+ * panel wider than the editor tree above it.
  */
-.monaco-workbench .split-view-view:has(>.part.activitybar),
-.monaco-workbench .split-view-view:has(>.part.activitybar)>.part.activitybar,
-.monaco-workbench .split-view-view:has(>.part.activitybar)>.part.activitybar>.content {
+.monaco-workbench .split-view-view:has(>.part.activitybar):not(:has(+.split-view-view>.part.sidebar)):not(:has(~.split-view-view>.part.unifiedsidebar)),
+.monaco-workbench .split-view-view:has(>.part.activitybar):not(:has(+.split-view-view>.part.sidebar)):not(:has(~.split-view-view>.part.unifiedsidebar))>.part.activitybar,
+.monaco-workbench .split-view-view:has(>.part.activitybar):not(:has(+.split-view-view>.part.sidebar)):not(:has(~.split-view-view>.part.unifiedsidebar))>.part.activitybar>.content {
   width: var(--cursorbrains-activity-bar-width) !important;
 }
 
-.monaco-workbench .split-view-view:has(>.part.activitybar)+.split-view-view {
+.monaco-workbench .split-view-view:has(>.part.activitybar):not(:has(~.split-view-view>.part.unifiedsidebar))+.split-view-view:not(:has(>.part.sidebar)) {
   left: var(--cursorbrains-activity-bar-width) !important;
   width: calc(100% - var(--cursorbrains-activity-bar-width)) !important;
 }
