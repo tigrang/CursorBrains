@@ -64,4 +64,16 @@
   & .part:is(.titlebar, .activitybar, .statusbar) {
     @apply border-transparent! bg-[var(--cursorbrains-frame)]!;
   }
+
+  & .part.titlebar {
+    background:
+      linear-gradient(
+        90deg,
+        var(--cursorbrains-frame) 0,
+        var(--cursorbrains-frame) 20px,
+        color-mix(in oklab, var(--cursorbrains-project-accent) 18%, var(--cursorbrains-frame)) 220px,
+        color-mix(in oklab, var(--cursorbrains-project-accent) 10%, var(--cursorbrains-frame)) 34%,
+        var(--cursorbrains-frame) 62%
+      ) !important;
+  }
 }

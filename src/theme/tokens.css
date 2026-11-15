@@ -29,6 +29,7 @@
   --cursorbrains-gutter-number-active: #9799a1;
   --cursorbrains-gutter-font-size: 13px;
   --cursorbrains-gutter-padding: 7px;
+  --cursorbrains-project-accent: oklch(68% 0.14 190);
 
   /* Window chrome */
   --vscode-titleBar-activeBackground: var(--cursorbrains-frame) !important;

@@ -1,3 +1,55 @@
+if (typeof MutationObserver === 'function' && typeof document.querySelector === 'function') {
+  const projectAccentProperty = '--cursorbrains-project-accent';
+  let appliedProjectIdentity;
+
+  globalThis.__cursorBrainsProjectObserver?.disconnect();
+
+  function projectIdentity() {
+    const projectTitle = document.querySelector('.part.titlebar .window-title-text');
+    return (
+      projectTitle?.getAttribute('aria-label')
+      || projectTitle?.textContent
+      || document.title
+      || 'Cursor'
+    ).trim() || 'Cursor';
+  }
+
+  function projectHue(identity) {
+    // FNV-1a keeps the same project color across reloads without stored state.
+    let hash = 0x811c9dc5;
+    for (const character of identity) {
+      hash ^= character.codePointAt(0);
+      hash = Math.imul(hash, 0x01000193);
+    }
+    return ((hash >>> 0) % 360 + 55) % 360;
+  }
+
+  function refreshProjectAccent() {
+    const workbench = document.querySelector('.monaco-workbench');
+    if (!workbench) return;
+
+    const identity = projectIdentity();
+    if (identity === appliedProjectIdentity) return;
+
+    workbench.style.setProperty(
+      projectAccentProperty,
+      `oklch(68% 0.14 ${projectHue(identity)})`,
+    );
+    appliedProjectIdentity = identity;
+  }
+
+  refreshProjectAccent();
+  const projectObserver = new MutationObserver(refreshProjectAccent);
+  projectObserver.observe(document.querySelector('.part.titlebar') || document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true,
+    attributes: true,
+    attributeFilter: ['aria-label'],
+  });
+  globalThis.__cursorBrainsProjectObserver = projectObserver;
+}
+
 if (typeof MutationObserver === 'function' && typeof document.querySelectorAll === 'function') {
   const pinClass = 'cursorbrains-reference-pin';
 
