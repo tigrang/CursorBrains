@@ -1,0 +1,22 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Controls and overlays */
+
+  & :is(.monaco-inputbox, .monaco-select-box, .monaco-button) {
+    @apply rounded-[6px];
+  }
+
+  & :is(.monaco-action-bar, .monaco-toolbar) .action-item .action-label {
+    @apply rounded-[4px];
+  }
+
+  & .monaco-scrollable-element > .scrollbar > .slider {
+    @apply rounded-[6px];
+  }
+
+  & .quick-input-widget,
+  & .monaco-menu .monaco-action-bar.vertical {
+    @apply rounded-[8px];
+  }
+}

@@ -1,0 +1,37 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Lists and project tree */
+
+  & .part:is(.sidebar, .auxiliarybar, .panel) .monaco-list-row {
+    @apply rounded-[4px];
+  }
+
+  & .explorer-folders-view .monaco-icon-label .label-name {
+    font-family: var(--cursorbrains-tree-font) !important;
+    font-size: var(--cursorbrains-tree-font-size) !important;
+    font-weight: 400 !important;
+    letter-spacing: 0 !important;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  & .part.sidebar .monaco-list-row:is(.selected, .focused) {
+    background-color: var(--cursorbrains-selection) !important;
+  }
+
+  & .part.sidebar .explorer-folders-view .monaco-list-row:is(.selected, .focused) {
+    @apply isolate bg-transparent! outline-none!;
+  }
+
+  & .part.sidebar .explorer-folders-view .monaco-list-row:is(.selected, .focused)::after {
+    content: "";
+    @apply pointer-events-none absolute;
+    z-index: -1;
+    left: 8px;
+    right: 8px;
+    top: 1px;
+    bottom: 1px;
+    border-radius: 4px;
+    background-color: var(--cursorbrains-tree-selection);
+  }
+}

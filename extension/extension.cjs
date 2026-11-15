@@ -11,7 +11,7 @@ async function pinReferences() {
     sourceUri,
     sourcePosition,
   ) ?? [];
-  const target = references.find(({ uri, range }) =>
+  const target = references.find(({uri, range}) =>
     uri.toString() !== sourceUri.toString() || !range.contains(sourcePosition)
   ) ?? references[0];
   if (!target) return;
@@ -32,6 +32,7 @@ function activate(context) {
   );
 }
 
-function deactivate() {}
+function deactivate() {
+}
 
-module.exports = { activate, deactivate };
+module.exports = {activate, deactivate};

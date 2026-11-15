@@ -1,5 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises';
-import { fileURLToPath } from 'node:url';
+import {readFile, writeFile} from 'node:fs/promises';
+import {fileURLToPath} from 'node:url';
 
 export const cssPath = new URL('../dist/cursorbrains.css', import.meta.url);
 export const scriptPath = new URL('../dist/cursorbrains.js', import.meta.url);

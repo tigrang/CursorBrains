@@ -1,0 +1,67 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Workbench frame and panels */
+
+  & .part:is(.sidebar, .editor, .auxiliarybar, .panel, .unifiedsidebar) {
+    @apply overflow-hidden! rounded-[var(--cursorbrains-radius)]! border-transparent! bg-[var(--cursorbrains-panel)]!;
+  }
+
+  & .part.sidebar,
+  & .split-view-view > .part.editor,
+  & .part.auxiliarybar,
+  & .part.unifiedsidebar {
+    margin: var(--cursorbrains-seam) var(--cursorbrains-seam) 0;
+    max-height: calc(100% - var(--cursorbrains-seam) - 2px) !important;
+  }
+
+  & .monaco-split-view2.horizontal .split-view-container > .split-view-view:last-child:has(>.part.auxiliarybar) {
+    right: var(--cursorbrains-right-padding) !important;
+    width: auto !important;
+  }
+
+  & .part.panel.bottom {
+    box-sizing: border-box !important;
+    border-top: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+    border-right: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+    border-bottom: 0 !important;
+    border-left: var(--cursorbrains-seam) solid var(--cursorbrains-frame) !important;
+  }
+
+  &:has(.split-view-view.visible>.part.auxiliarybar) .part.panel.bottom {
+    border-right-width: calc(var(--cursorbrains-seam) + var(--cursorbrains-right-padding)) !important;
+  }
+
+  & .part.panel.bottom > .content {
+    position: relative !important;
+    margin-top: calc(-1 * var(--cursorbrains-seam)) !important;
+    overflow: hidden !important;
+    border-radius:
+      0 0
+      calc(var(--cursorbrains-radius) - var(--cursorbrains-seam))
+      calc(var(--cursorbrains-radius) - var(--cursorbrains-seam)) !important;
+  }
+
+  & .part.editor.embedded-aux-bar-editor {
+    border-radius: 0 !important;
+  }
+
+  & .part:is(.sidebar, .auxiliarybar, .panel) > .title,
+  & .part.editor > .content > .monaco-grid-view {
+    border-top-left-radius: var(--cursorbrains-radius);
+    border-top-right-radius: var(--cursorbrains-radius);
+  }
+
+  & .part:is(.sidebar, .auxiliarybar, .panel) > .title {
+    background-color: var(--cursorbrains-panel) !important;
+    color: var(--cursorbrains-text);
+  }
+
+  & .part:is(.sidebar, .auxiliarybar, .panel) > .title .title-label h2 {
+    @apply font-semibold normal-case;
+  }
+
+  & .part:is(.titlebar, .activitybar, .statusbar) {
+    @apply border-transparent! bg-[var(--cursorbrains-frame)]!;
+  }
+}

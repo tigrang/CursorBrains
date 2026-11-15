@@ -1,0 +1,177 @@
+.monaco-workbench {
+  --cursorbrains-frame: #25282c;
+  --cursorbrains-panel: #191a1d;
+  --cursorbrains-elevated: #232529;
+  --cursorbrains-selection: #33353a;
+  --cursorbrains-activity-selection: #484b53;
+  --cursorbrains-tree-selection: #30426e;
+  --cursorbrains-hover: #292c31;
+  --cursorbrains-border: #36393f;
+  --cursorbrains-text: #c3c5cb;
+  --cursorbrains-muted: #74767b;
+  --cursorbrains-faint: #62656b;
+  --cursorbrains-blue: #3771e1;
+  --cursorbrains-link: #5891ff;
+  --cursorbrains-tab-active: #233657;
+  --cursorbrains-tab-hover: #2d2e30;
+  --cursorbrains-tab-inactive-text: #96989e;
+  --cursorbrains-tab-border: #2c5fbe;
+  --cursorbrains-radius: 12px;
+  --cursorbrains-seam: 3px;
+  --cursorbrains-right-padding: 4px;
+  --cursorbrains-activity-bar-width: 36px;
+  --cursorbrains-activity-action-size: 28px;
+  --cursorbrains-activity-icon-size: 16px;
+  --cursorbrains-tree-font: Inter, sans-serif;
+  --cursorbrains-tree-font-size: 13px;
+  --cursorbrains-gutter-background: #18191a;
+  --cursorbrains-gutter-number: #43464e;
+  --cursorbrains-gutter-number-active: #9799a1;
+  --cursorbrains-gutter-font-size: 13px;
+  --cursorbrains-gutter-padding: 7px;
+
+  /* Window chrome */
+  --vscode-titleBar-activeBackground: var(--cursorbrains-frame) !important;
+  --vscode-titleBar-inactiveBackground: var(--cursorbrains-frame) !important;
+  --vscode-titleBar-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-titleBar-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-titleBar-border: transparent !important;
+  --vscode-activityBar-background: var(--cursorbrains-frame) !important;
+  --vscode-activityBar-foreground: var(--cursorbrains-text) !important;
+  --vscode-activityBar-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-activityBar-border: transparent !important;
+  --vscode-activityBar-activeBorder: transparent !important;
+  --vscode-activityBar-activeBackground: var(--cursorbrains-selection) !important;
+  --vscode-activityBarBadge-background: var(--cursorbrains-blue) !important;
+  --vscode-activityBarBadge-foreground: #ffffff !important;
+
+  /* Sidebars and bottom panel */
+  --vscode-sideBar-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBar-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBar-border: transparent !important;
+  --vscode-sideBarTitle-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBarTitle-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBarSectionHeader-background: var(--cursorbrains-panel) !important;
+  --vscode-sideBarSectionHeader-foreground: var(--cursorbrains-text) !important;
+  --vscode-sideBarSectionHeader-border: transparent !important;
+  --vscode-panel-background: var(--cursorbrains-panel) !important;
+  --vscode-panel-border: transparent !important;
+  --vscode-panelTitle-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-panelTitle-inactiveForeground: var(--cursorbrains-muted) !important;
+  --vscode-panelTitle-activeBorder: var(--cursorbrains-blue) !important;
+  --vscode-terminal-background: var(--cursorbrains-panel) !important;
+  --vscode-outputView-background: var(--cursorbrains-panel) !important;
+
+  /* Editor and tabs */
+  --vscode-editor-background: var(--cursorbrains-panel) !important;
+  --vscode-editorGutter-background: var(--cursorbrains-gutter-background) !important;
+  --vscode-editorGroup-border: var(--cursorbrains-frame) !important;
+  --vscode-editorGroup-emptyBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-tabsBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-noTabsBackground: var(--cursorbrains-panel) !important;
+  --vscode-editorGroupHeader-tabsBorder: transparent !important;
+  --vscode-editorGroupHeader-border: transparent !important;
+  --vscode-tab-activeBackground: transparent !important;
+  --vscode-tab-activeForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-inactiveBackground: transparent !important;
+  --vscode-tab-inactiveForeground: var(--cursorbrains-tab-inactive-text) !important;
+  --vscode-tab-unfocusedActiveBackground: transparent !important;
+  --vscode-tab-unfocusedActiveForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-unfocusedInactiveBackground: transparent !important;
+  --vscode-tab-unfocusedInactiveForeground: var(--cursorbrains-tab-inactive-text) !important;
+  --vscode-tab-hoverBackground: transparent !important;
+  --vscode-tab-hoverForeground: var(--cursorbrains-text) !important;
+  --vscode-tab-border: transparent !important;
+  --vscode-tab-activeBorder: transparent !important;
+  --vscode-tab-activeBorderTop: transparent !important;
+  --vscode-tab-activeBorderBottom: transparent !important;
+  --vscode-tab-unfocusedActiveBorder: transparent !important;
+  --vscode-tab-unfocusedActiveBorderTop: transparent !important;
+  --vscode-breadcrumb-background: var(--cursorbrains-panel) !important;
+  --vscode-breadcrumb-foreground: var(--cursorbrains-muted) !important;
+  --vscode-breadcrumb-focusForeground: var(--cursorbrains-text) !important;
+
+  /* Status bar */
+  --vscode-statusBar-background: var(--cursorbrains-frame) !important;
+  --vscode-statusBar-noFolderBackground: var(--cursorbrains-frame) !important;
+  --vscode-statusBar-foreground: var(--cursorbrains-muted) !important;
+  --vscode-statusBar-border: transparent !important;
+  --vscode-statusBarItem-hoverBackground: var(--cursorbrains-selection) !important;
+  --vscode-statusBarItem-remoteBackground: var(--cursorbrains-frame) !important;
+  --vscode-statusBarItem-remoteForeground: var(--cursorbrains-text) !important;
+
+  /* Lists and trees */
+  --vscode-list-hoverBackground: var(--cursorbrains-hover) !important;
+  --vscode-list-hoverForeground: var(--cursorbrains-text) !important;
+  --vscode-list-activeSelectionBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-activeSelectionForeground: var(--cursorbrains-text) !important;
+  --vscode-list-inactiveSelectionBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-inactiveSelectionForeground: var(--cursorbrains-text) !important;
+  --vscode-list-focusBackground: var(--cursorbrains-selection) !important;
+  --vscode-list-focusForeground: var(--cursorbrains-text) !important;
+  --vscode-list-focusOutline: var(--cursorbrains-blue) !important;
+  --vscode-tree-indentGuidesStroke: var(--cursorbrains-border) !important;
+
+  /* Controls and overlays */
+  --vscode-input-background: var(--cursorbrains-panel) !important;
+  --vscode-input-foreground: var(--cursorbrains-text) !important;
+  --vscode-input-border: var(--cursorbrains-border) !important;
+  --vscode-input-placeholderForeground: var(--cursorbrains-muted) !important;
+  --vscode-inputOption-activeBackground: #3771e126 !important;
+  --vscode-inputOption-activeBorder: var(--cursorbrains-blue) !important;
+  --vscode-dropdown-background: var(--cursorbrains-elevated) !important;
+  --vscode-dropdown-foreground: var(--cursorbrains-text) !important;
+  --vscode-dropdown-border: var(--cursorbrains-border) !important;
+  --vscode-button-background: var(--cursorbrains-blue) !important;
+  --vscode-button-hoverBackground: #4b80e5 !important;
+  --vscode-button-foreground: #ffffff !important;
+  --vscode-button-secondaryBackground: var(--cursorbrains-selection) !important;
+  --vscode-button-secondaryHoverBackground: var(--cursorbrains-border) !important;
+  --vscode-button-secondaryForeground: var(--cursorbrains-text) !important;
+  --vscode-toolbar-hoverBackground: var(--cursorbrains-selection) !important;
+  --vscode-toolbar-activeBackground: var(--cursorbrains-hover) !important;
+  --vscode-focusBorder: var(--cursorbrains-blue) !important;
+  --vscode-textLink-foreground: var(--cursorbrains-link) !important;
+  --vscode-textLink-activeForeground: #7aa7ff !important;
+  --vscode-widget-border: var(--cursorbrains-border) !important;
+  --vscode-widget-shadow: #00000040 !important;
+  --vscode-quickInput-background: var(--cursorbrains-elevated) !important;
+  --vscode-quickInput-foreground: var(--cursorbrains-text) !important;
+  --vscode-menu-background: var(--cursorbrains-elevated) !important;
+  --vscode-menu-foreground: var(--cursorbrains-text) !important;
+  --vscode-menu-border: var(--cursorbrains-border) !important;
+  --vscode-scrollbarSlider-background: #74767b36 !important;
+  --vscode-scrollbarSlider-hoverBackground: #74767b66 !important;
+  --vscode-scrollbarSlider-activeBackground: #74767b88 !important;
+  --vscode-scrollbar-shadow: transparent !important;
+  --vscode-sash-hoverBorder: var(--cursorbrains-blue) !important;
+
+  /* Cursor chat */
+  --composer-pane-background: var(--cursorbrains-panel) !important;
+  --cursor-text-primary: var(--cursorbrains-text) !important;
+  --cursor-text-secondary: #a0a2a8 !important;
+  --cursor-text-tertiary: var(--cursorbrains-muted) !important;
+  --cursor-text-quaternary: var(--cursorbrains-faint) !important;
+  --cursor-text-active: var(--cursorbrains-text) !important;
+  --cursor-text-focused: var(--cursorbrains-text) !important;
+  --cursor-icon-primary: var(--cursorbrains-text) !important;
+  --cursor-icon-secondary: #a0a2a8 !important;
+  --cursor-icon-tertiary: var(--cursorbrains-muted) !important;
+  --cursor-icon-quaternary: var(--cursorbrains-faint) !important;
+  --cursor-icon-accent-primary: var(--cursorbrains-link) !important;
+  --cursor-bg-primary: #c3c5cb33 !important;
+  --cursor-bg-secondary: #c3c5cb24 !important;
+  --cursor-bg-tertiary: #c3c5cb14 !important;
+  --cursor-bg-quaternary: #c3c5cb0f !important;
+  --cursor-bg-quinary: #c3c5cb0a !important;
+  --cursor-bg-elevated: var(--cursorbrains-elevated) !important;
+  --cursor-bg-active: var(--cursorbrains-selection) !important;
+  --cursor-bg-focused: var(--cursorbrains-selection) !important;
+  --cursor-stroke-primary: var(--cursorbrains-border) !important;
+  --cursor-stroke-secondary: #c3c5cb1f !important;
+  --cursor-stroke-tertiary: #c3c5cb14 !important;
+  --cursor-stroke-quaternary: #c3c5cb0a !important;
+  --cursor-stroke-focused: var(--cursorbrains-blue) !important;
+
+  background-color: var(--cursorbrains-frame) !important;
+}

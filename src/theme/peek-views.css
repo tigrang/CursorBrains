@@ -1,0 +1,186 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Peek views */
+
+  & .zone-widget > .zone-widget-container.peekview-widget {
+    width: calc(100% - 80px) !important;
+    max-width: none !important;
+    margin-inline: 40px !important;
+    border-width: 1px 0 !important;
+    border-style: solid !important;
+    border-color: transparent !important;
+    border-radius: 8px !important;
+    outline: 1px solid var(--cursorbrains-border);
+    outline-offset: -1px;
+    background: var(--cursorbrains-panel) !important;
+    box-shadow: 0 12px 28px #00000073 !important;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget > .head {
+    background: var(--cursorbrains-elevated) !important;
+    border-bottom: 1px solid var(--cursorbrains-border) !important;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget .peekview-title .filename {
+    color: #d7d9de !important;
+    font-weight: 600;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget .peekview-title .dirname {
+    color: #92949b !important;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget .peekview-title .meta {
+    color: #b0b2b8 !important;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget .peekview-actions .action-label {
+    color: var(--cursorbrains-text) !important;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget .peekview-actions .cursorbrains-reference-pin:hover {
+    color: #dce6ff !important;
+  }
+
+  /* Dirty diff */
+
+  & .zone-widget.dirty-diff .peekview-widget > .head {
+    @apply justify-start;
+  }
+
+  & .zone-widget.dirty-diff .peekview-widget > .head :is(.peekview-actions, .monaco-action-bar, .actions-container) {
+    @apply contents;
+  }
+
+  & .zone-widget.dirty-diff .peekview-widget > .head > .peekview-title {
+    order: 4;
+    margin-left: 6px;
+  }
+
+  & .zone-widget.dirty-diff .peekview-title > .filename {
+    @apply hidden;
+  }
+
+  & .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label^="Show Previous Change"]) {
+    order: 0;
+    margin-left: 4px;
+  }
+
+  & .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label^="Show Next Change"]) {
+    order: 1;
+  }
+
+  & .zone-widget.dirty-diff .peekview-actions .action-item[data-command-id="git.revertChange"] {
+    order: 2;
+  }
+
+  & .zone-widget.dirty-diff .peekview-actions .action-item[data-command-id="git.stageChange"] {
+    order: 3;
+  }
+
+  & .zone-widget.dirty-diff .peekview-actions .action-item:has(>.action-label[aria-label="Close"]) {
+    order: 5;
+    margin-right: 2px;
+    margin-left: auto;
+  }
+
+  & .zone-widget > .zone-widget-container.peekview-widget > .body {
+    border: 0 !important;
+    background: var(--cursorbrains-panel) !important;
+  }
+
+  & .dirty-diff .monaco-diff-editor > .editor.modified {
+    right: 0 !important;
+    width: auto !important;
+  }
+
+  & .dirty-diff .monaco-diff-editor > .editor.modified > .monaco-editor,
+  & .dirty-diff .monaco-diff-editor > .editor.modified > .monaco-editor > .overflow-guard {
+    width: 100% !important;
+  }
+
+  & .dirty-diff .monaco-diff-editor > .editor.modified .editor-scrollable {
+    right: 0 !important;
+    width: auto !important;
+  }
+
+  & .dirty-diff .monaco-diff-editor > .editor.modified :is(.scroll-decoration, .overlayWidgets) {
+    width: 100% !important;
+  }
+
+  & .dirty-diff .monaco-diff-editor > .diffOverview {
+    left: auto !important;
+    right: 0 !important;
+  }
+
+  /* References */
+
+  & .reference-zone-widget .split-view-container > .split-view-view:first-child {
+    left: auto !important;
+    right: 0 !important;
+    width: 66% !important;
+  }
+
+  & .reference-zone-widget .split-view-container > .split-view-view:nth-child(2) {
+    left: 0 !important;
+    width: 34% !important;
+  }
+
+  & .reference-zone-widget .preview,
+  & .reference-zone-widget .preview > .monaco-editor,
+  & .reference-zone-widget .ref-tree {
+    width: 100% !important;
+  }
+
+  & .reference-zone-widget .ref-tree {
+    background: #202124 !important;
+    box-shadow: inset -1px 0 var(--cursorbrains-border);
+    font-family: var(--cursorbrains-tree-font) !important;
+  }
+
+  & .reference-zone-widget .ref-tree .monaco-list-row {
+    @apply isolate w-full! bg-transparent! outline-none!;
+    color: #a7a9af !important;
+  }
+
+  & .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused)::before,
+  & .reference-zone-widget .ref-tree .monaco-list-row:hover::before {
+    content: "";
+    @apply pointer-events-none absolute;
+    z-index: -1;
+    inset: 1px 5px;
+    border-radius: 4px;
+    background: var(--cursorbrains-hover);
+  }
+
+  & .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused) {
+    color: #d8dae0 !important;
+  }
+
+  & .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused)::before,
+  & .reference-zone-widget .ref-tree .monaco-list-row:is(.selected, .focused):hover::before {
+    background: var(--cursorbrains-tree-selection);
+  }
+
+  & .reference-zone-widget .ref-tree .referenceMatch .highlight {
+    border-radius: 2px;
+    background: #31456f !important;
+    color: #dce6ff !important;
+  }
+
+  & .reference-zone-widget .preview,
+  & .reference-zone-widget .preview .monaco-editor {
+    background: var(--cursorbrains-panel) !important;
+  }
+
+  & .reference-zone-widget .monaco-sash.vertical {
+    left: calc(34% - 2px) !important;
+    transform: none !important;
+    pointer-events: none;
+  }
+
+  & .reference-zone-widget .monaco-sash.vertical:hover {
+    background: var(--cursorbrains-blue) !important;
+  }
+}

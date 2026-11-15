@@ -27,10 +27,11 @@ brew install --cask font-inter
 ```
 
 ## Setup
-Use [settings.json](settings.json) for **Preferences: Open User Settings (JSON)** and [keybindings.json](keybindings.json) for **Preferences: Open Keyboard Shortcuts (JSON)**.
+
+Use [settings.json](settings.json) for **Preferences: Open User Settings (JSON)**
+and [keybindings.json](keybindings.json) for **Preferences: Open Keyboard Shortcuts (JSON)**.
 
 Open **Developer: Toggle Developer Tools**, select **Console**, paste `dist/cursorbrains.js`, and run it.
-
 
 Open scripts/cursor_run_last_command.applescript, File > Export > Application (Run-only + Sign to Run Locally).
 Save to $HOME/Applications/CursorRunLastCommand.app

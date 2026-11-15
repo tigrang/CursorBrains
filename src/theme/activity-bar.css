@@ -1,0 +1,68 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Activity bar */
+
+  & .part.activitybar .action-item .action-label {
+    @apply rounded-[6px];
+  }
+
+  & .part.activitybar .action-item.checked .action-label {
+    background-color: var(--cursorbrains-activity-selection);
+  }
+
+  & .split-view-view:has(> .part.activitybar) {
+    &:not(:has(+ .split-view-view > .part.sidebar)):not(:has(~ .split-view-view > .part.unifiedsidebar)) {
+      &,
+      & > .part.activitybar,
+      & > .part.activitybar > .content {
+        width: var(--cursorbrains-activity-bar-width) !important;
+      }
+    }
+  }
+
+  & .split-view-view:has(> .part.activitybar):not(:has(~ .split-view-view > .part.unifiedsidebar))
+  + .split-view-view:not(:has(> .part.sidebar)) {
+    left: var(--cursorbrains-activity-bar-width) !important;
+    width: calc(100% - var(--cursorbrains-activity-bar-width)) !important;
+  }
+
+  & .part.activitybar .monaco-action-bar.vertical > .actions-container {
+    @apply box-border!;
+    gap: 4px !important;
+    padding: 2px !important;
+  }
+
+  & .part.activitybar .monaco-action-bar.vertical .action-item,
+  & .part.activitybar .monaco-action-bar.vertical .action-label {
+    width: var(--cursorbrains-activity-action-size) !important;
+    height: var(--cursorbrains-activity-action-size) !important;
+    margin-inline: auto;
+  }
+
+  & .part.activitybar > .content :not(.monaco-menu) > .monaco-action-bar.vertical .action-label {
+    @apply box-border!;
+    padding: 2px !important;
+  }
+
+  & .part.activitybar > .content :not(.monaco-menu) > .monaco-action-bar.vertical .action-item .badge .badge-content {
+    font-size: 8px !important;
+    line-height: 12px !important;
+    min-width: 6px !important;
+    height: 12px !important;
+    padding: 0 3px !important;
+    top: 14px !important;
+    right: 1px !important;
+    transform: none !important;
+    transform-origin: right bottom !important;
+  }
+
+  & .part.activitybar > .content :not(.monaco-menu) > .monaco-action-bar.vertical .action-label.codicon {
+    font-size: var(--cursorbrains-activity-icon-size) !important;
+  }
+
+  & .part.activitybar > .content :not(.monaco-menu) > .monaco-action-bar.vertical .action-label.uri-icon {
+    mask-size: var(--cursorbrains-activity-icon-size) var(--cursorbrains-activity-icon-size) !important;
+    background-size: var(--cursorbrains-activity-icon-size) var(--cursorbrains-activity-icon-size) !important;
+  }
+}

@@ -17,9 +17,10 @@ if (typeof MutationObserver === 'function' && typeof document.querySelectorAll =
       cancelable: true,
     });
     try {
-      Object.defineProperty(event, 'keyCode', { configurable: true, get: () => 129 });
-      Object.defineProperty(event, 'which', { configurable: true, get: () => 129 });
-    } catch { /* the event already exposes keyCode */ }
+      Object.defineProperty(event, 'keyCode', {configurable: true, get: () => 129});
+      Object.defineProperty(event, 'which', {configurable: true, get: () => 129});
+    } catch { /* the event already exposes keyCode */
+    }
     const target = document.querySelector('.monaco-workbench') || document.body;
     target.dispatchEvent(event);
   }
@@ -58,7 +59,7 @@ if (typeof MutationObserver === 'function' && typeof document.querySelectorAll =
 
   refreshPinButtons();
   const observer = new MutationObserver(refreshPinButtons);
-  observer.observe(document.body, { childList: true, subtree: true });
+  observer.observe(document.body, {childList: true, subtree: true});
   globalThis.__cursorBrainsReferenceObserver = observer;
 }
 

@@ -1,0 +1,87 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Editor canvas and gutter */
+
+  & .monaco-editor .sticky-widget {
+    box-shadow: 0 10px 18px -5px var(--vscode-editorStickyScroll-shadow) !important;
+  }
+
+  & .monaco-editor .margin-view-overlays .line-numbers {
+    left: calc(var(--cursorbrains-seam) + var(--cursorbrains-gutter-padding)) !important;
+    color: var(--cursorbrains-gutter-number) !important;
+    font-size: var(--cursorbrains-gutter-font-size);
+    @apply text-right;
+  }
+
+  & .monaco-editor .margin-view-overlays .line-numbers.active-line-number {
+    color: var(--cursorbrains-gutter-number-active) !important;
+  }
+
+  /* Editor tabs */
+
+  & .part.editor .editor-group-container > .title {
+    --editor-group-tab-height: 42px !important;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container {
+    padding-left: 4px;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab {
+    @apply isolate border-transparent! bg-transparent!;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab > .monaco-icon-label,
+  & .part.editor .editor-group-container > .title .tabs-container > .tab > .tab-actions {
+    transform: translateY(2px) !important;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab::before {
+    content: "";
+    @apply pointer-events-none absolute box-border;
+    z-index: -1;
+    left: 4px;
+    right: 4px;
+    top: 10px;
+    bottom: 6px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab.active::before {
+    background-color: var(--cursorbrains-tab-active);
+    border-color: var(--cursorbrains-tab-border);
+  }
+
+  & .part.editor .editor-group-container:not(.active) > .title .tabs-container > .tab.active::before,
+  & .part.editor .editor-group-container > .title .tabs-container > .tab:not(.active):hover::before {
+    background-color: var(--cursorbrains-tab-hover);
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab.active {
+    color: var(--cursorbrains-text) !important;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab:not(.active) .label-name {
+    color: var(--cursorbrains-tab-inactive-text) !important;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab > .tab-border-top-container,
+  & .part.editor .editor-group-container > .title .tabs-container > .tab > .tab-border-bottom-container {
+    display: none !important;
+  }
+
+  & .part.editor .editor-group-container > .title .tabs-container > .tab.drop-target-right::before {
+    left: 0;
+    right: auto;
+    top: 0;
+    bottom: auto;
+    width: 1px;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    background-color: var(--vscode-tab-dragAndDropBorder) !important;
+    z-index: 11;
+  }
+}

@@ -1,0 +1,32 @@
+@reference "tailwindcss";
+
+.monaco-workbench {
+  /* Agent chat */
+
+  & .composer-bar,
+  & .composer-messages-container,
+  & .part.auxiliarybar {
+    --composer-pane-background: var(--cursorbrains-panel) !important;
+  }
+
+  & .ai-input-full-input-box {
+    --ai-input-full-input-box-border-radius: 8px !important;
+    --ai-input-full-input-box-border: 1px solid var(--cursorbrains-border) !important;
+    background-color: var(--cursorbrains-panel) !important;
+    color: var(--cursorbrains-text);
+  }
+
+  & .ai-input-full-input-box:focus-within {
+    --ai-input-full-input-box-border: 1px solid var(--cursorbrains-blue) !important;
+    box-shadow: 0 0 0 1px var(--cursorbrains-blue) !important;
+  }
+
+  & .composer-input-edit-banner {
+    @apply rounded-t-[6px];
+    color: var(--cursorbrains-text);
+  }
+
+  & .part.auxiliarybar .auxiliary-bar-title--agent-mode .auxiliary-bar-chat-title {
+    color: var(--cursorbrains-text);
+  }
+}
